@@ -1,5 +1,10 @@
-Randomized Page
-<br>
-{{ randomized }}
+{% extends 'randomizingsystem/template.html' %}
+{% load static %}
 
+{% block content %}
+<div class="randomized">
+    <h1>Randomizer Glass generated new list</h1>
+    <h3>{{ randomized }}</h3>
+</div>
 <a href="{% url 'home' %}">Randomize again</a>
+{% endblock %}

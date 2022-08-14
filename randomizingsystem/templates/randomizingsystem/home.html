@@ -1,9 +1,14 @@
-Home Page
+{% extends 'randomizingsystem/template.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Randomizer Glass</h1>
 {{ error }}
+<h3>Write names splitting with "SPACE" or "ENTER"</h3>
 <form  action="{% url 'randomized' %}">
     {% csrf_token %}
-    <textarea name="text" rows="16" cols="40"></textarea><br>
-    <select name="typeofrandomizing">
+    <textarea class='textarea' name="text" rows="16" cols="40" placeholder="Write names here..."></textarea><br>
+    <select class="select" name="typeofrandomizing">
         <option value="randomorder">Random order</option>
         <option value="2">Divide into 2 groups</option>
         <option value="3">Divide into 3 groups</option>
@@ -11,5 +16,6 @@ Home Page
         <option value="6">Divide into 6 groups</option>
     </select>
     <br>
-    <button type="submit">Randomize</button>
+    <button class='submit' type="submit">Randomize</button>
 </form>
+{% endblock %}
