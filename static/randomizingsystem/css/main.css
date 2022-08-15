@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    color: #01225c;
 }
 
 
@@ -59,11 +60,12 @@ form {
     padding-top: 20px;
 }
 
-.submit, .select, .button {
+.submit, .select {
     margin-top: 20px;
     width: 20%;
     height: 5vh;
     font-size: 20px;
+    border-radius: 2rem;
 }
 
 .textarea {
@@ -71,9 +73,60 @@ form {
     padding: 2%;
 }
 
-.submit, .select {
-    margin-top: 20px;
-    width: 20%;
-    height: 5vh;
+.teams {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 7%;
+    margin-right: 7%;
+    margin-left: 7%;
+}
+.teams h3{
+    font-size: 30px;
+    font-weight: bolder;
+}
+.teams p{
+    font-size: 22px;
+}
+
+
+.team {
+    margin-bottom: 8%;
+    text-align: left;
+    float: left;
+    width: 10%;
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+.randomized h2 {
+    font-size: 40px;
+    margin-top: 3%;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button a {
+    color: #fcfcfc;
+    width: 25%;
+    min-height: 7vh;
     font-size: 20px;
+    background: linear-gradient(to right top, #9ED2C6, #54BAB9);
+    border-radius: 2rem;
+    border: 2.5px solid #01225c;
+    text-decoration: none;
+    transition: transform .2s ease;
+    text-align: center;
+    padding-top: 17px;
+}
+
+.submit, .select, .button a:hover {
+    color: #01225c;
+    text-decoration: none;
+    transform: scale(1.1);
 }

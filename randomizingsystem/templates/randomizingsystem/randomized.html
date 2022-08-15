@@ -3,8 +3,27 @@
 
 {% block content %}
 <div class="randomized">
-    <h1>Randomizer Glass generated new list</h1>
-    <h3>{{ randomized }}</h3>
+    {% if randomizedorder %}
+        <h2>Randomizer Glass generated randomized order</h2>
+        {% for member in randomizedorder %}
+            <h3>{{ member }}</h3>
+        {% endfor %}
+    {% else %}
+    <h2>Randomizer Glass divided people into groups</h2>
+    <div class="teams">
+        {% for team in randomized %}
+        <div class="team">
+            <h3>Team</h3>
+            {% for member in team %}
+                <p>{{ member }}</p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="button">
+        <a href="{% url 'home' %}">Randomize another info</a>
+    </div>
 </div>
-<a href="{% url 'home' %}">Randomize again</a>
+
 {% endblock %}

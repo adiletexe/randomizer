@@ -9,11 +9,12 @@ def randomized(request):
     splitted_text = list(map(str, (request.GET.get('text').split())))
     # random order
     if request.GET.get('typeofrandomizing') == 'randomorder':
-        randomized = []
+        randomizedorder = []
         for i in range(len(splitted_text)):
             rand = choice(splitted_text)
-            randomized.append(rand)
+            randomizedorder.append(rand)
             splitted_text.remove(rand)
+        return render(request, 'randomizingsystem/randomized.html', {'randomizedorder': randomizedorder})
     # 2 groups
     elif request.GET.get('typeofrandomizing') == '2':
         team1 = []
@@ -30,7 +31,8 @@ def randomized(request):
                 splitted_text.remove(rand2)
             except:
                 break
-        randomized = [team1, '-----', team2]
+        randomized = [team1, team2]
+        return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     # 3 groups
     elif request.GET.get('typeofrandomizing') == '3':
         team1 = []
@@ -52,7 +54,8 @@ def randomized(request):
                 splitted_text.remove(rand3)
             except:
                 break
-        randomized = [team1, '-----', team2, '-----', team3]
+        randomized = [team1, team2, team3]
+        return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     elif request.GET.get('typeofrandomizing') == '4':
         team1 = []
         team2 = []
@@ -78,7 +81,8 @@ def randomized(request):
                 splitted_text.remove(rand4)
             except:
                 break
-        randomized = [team1, '-----', team2, '-----', team3, '-----', team4]
+        randomized = [team1, team2, team3, team4]
+        return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     elif request.GET.get('typeofrandomizing') == '6':
         team1 = []
         team2 = []
@@ -114,9 +118,7 @@ def randomized(request):
                 splitted_text.remove(rand6)
             except:
                 break
-        randomized = [team1, '-----', team2, '-----', team3, '-----', team4, '-----', team5, '-----', team6]
+        randomized = [team1, team2, team3, team4, team5, team6]
+        return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     else:
         return render(request, 'randomizingsystem/home.html', {'error':'Something gone wrong!'})
-
-
-    return render(request, 'randomizingsystem/randomized.html', {'randomized':randomized})
