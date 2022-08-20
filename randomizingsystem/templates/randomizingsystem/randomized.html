@@ -5,9 +5,16 @@
 <div class="randomized">
     {% if randomizedorder %}
         <h2>Randomizer Glass generated randomized order</h2>
+        <br><br>
         {% for member in randomizedorder %}
             <h3>{{ member }}</h3>
         {% endfor %}
+        <br><br>
+    {% elif randomnumber %}
+    <h2>Randomizer Glass generated random number</h2>
+    <br><br>
+    <h2>{{ randomnumber }}</h2>
+    <br><br>
     {% else %}
     <h2>Randomizer Glass divided people into groups</h2>
     <div class="teams">
@@ -23,6 +30,10 @@
     {% endif %}
     <div class="button">
         <a href="{% url 'home' %}">Randomize another info</a>
+    </div>
+    <br><br>
+    <div class="aliamir">
+        <h2 data-text="Aliamir's Instagram story is loading...">Aliamir's Instagram story is loading...</h2>
     </div>
 </div>
 

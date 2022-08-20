@@ -1,0 +1,20 @@
+{% extends 'randomizingsystem/template.html' %}
+{% load static %}
+
+{% block content %}
+<div class="button">
+    <a href="{% url 'home' %}">Another functions</a>
+</div>
+<br>
+<h1>Randomizer Glass</h1>
+<br>
+<h3>Write MIN and MAX value splitting with "SPACE" or "ENTER"</h3>
+<br>
+<h2>{{ error }}</h2>
+<form action="{% url 'randomized' %}">
+    {% csrf_token %}
+    <textarea class='textarea1' name="text1" rows="2" cols="20" placeholder="Write names here..."></textarea><br>
+    <br>
+    <button class='submit' type="submit">Generate</button>
+</form>
+{% endblock %}

@@ -1,22 +1,35 @@
 from django.shortcuts import render
-from random import choice
+from random import choice, randint
+
 
 # Create your views here.
 def home(request):
     return render(request, 'randomizingsystem/home.html')
 
 def randomized(request):
-    splitted_text = list(map(str, (request.GET.get('text').split())))
     # random order
     if request.GET.get('typeofrandomizing') == 'randomorder':
+        splitted_text = list(map(str, (request.GET.get('text').split())))
         randomizedorder = []
         for i in range(len(splitted_text)):
             rand = choice(splitted_text)
             randomizedorder.append(rand)
             splitted_text.remove(rand)
         return render(request, 'randomizingsystem/randomized.html', {'randomizedorder': randomizedorder})
+    # randomnumber
+    elif request.GET.get('text1'):
+        try:
+            splitted_text = list(map(str, (request.GET.get('text1').split())))
+            min = int(splitted_text[0])
+            max = int(splitted_text[1])
+            randomnumber = randint(min, max)
+            return render(request, 'randomizingsystem/randomized.html', {'randomnumber': randomnumber})
+        except:
+            return render(request, 'randomizingsystem/randomnumber.html',
+                          {'error': 'Aren\'t you lizard? Enter values correctly'})
     # 2 groups
     elif request.GET.get('typeofrandomizing') == '2':
+        splitted_text = list(map(str, (request.GET.get('text').split())))
         team1 = []
         team2 = []
         for i in range(len(splitted_text)):
@@ -35,6 +48,7 @@ def randomized(request):
         return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     # 3 groups
     elif request.GET.get('typeofrandomizing') == '3':
+        splitted_text = list(map(str, (request.GET.get('text').split())))
         team1 = []
         team2 = []
         team3 = []
@@ -57,6 +71,7 @@ def randomized(request):
         randomized = [team1, team2, team3]
         return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     elif request.GET.get('typeofrandomizing') == '4':
+        splitted_text = list(map(str, (request.GET.get('text').split())))
         team1 = []
         team2 = []
         team3 = []
@@ -84,6 +99,7 @@ def randomized(request):
         randomized = [team1, team2, team3, team4]
         return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     elif request.GET.get('typeofrandomizing') == '6':
+        splitted_text = list(map(str, (request.GET.get('text').split())))
         team1 = []
         team2 = []
         team3 = []
@@ -121,4 +137,8 @@ def randomized(request):
         randomized = [team1, team2, team3, team4, team5, team6]
         return render(request, 'randomizingsystem/randomized.html', {'randomized': randomized})
     else:
-        return render(request, 'randomizingsystem/home.html', {'error':'Something gone wrong!'})
+        return render(request, 'randomizingsystem/randomnumber.html', {'error':'Aren\'t you lizard? Enter values correctly'})
+
+def randomnumber(request):
+    return render(request, 'randomizingsystem/randomnumber.html')
+

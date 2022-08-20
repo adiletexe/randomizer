@@ -20,5 +20,6 @@ from randomizingsystem import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('randomnumber', views.randomnumber, name='randomnumber'),
     path('randomized/', views.randomized, name='randomized'),
 ]
